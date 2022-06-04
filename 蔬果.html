@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/kantiancheng/live2d-widget@master/autoload.js"></script>
+    <script>
+        var new_page = "蔬果";
+    </script>
+
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+
+    <link href="./styles.css" rel="stylesheet">
+    <title>作物种植区</title>
+    <script src="./storage.js"></script>
+    <script src="./renderer.js"></script>
+</head>
+
+<body onload="initialize();" style="background-image: url('./img/vegetable-class.jpg'); background-size: cover; background-attachment:fixed;">
+    <div id="inform" class="inform">
+        <a id="inform_in" class="inform_in"></a>
+    </div>
+    <div class="autoc" onclick="autoc();">
+        <div id="autoc_in" class="autoc_in">
+            自动出售︿<br>已关<br>﹀
+        </div>
+    </div>
+    <div id='hide'></div>
+    <div id="uidvv"></div>
+    <div class="topbar" id="topbar">
+        <div class="table-div">
+            <table>
+                <tr class="table_w">
+                    <td class="table_h">
+                        经验🔬:
+                        <a class="nun" id="Experience"></a>
+                    </td>
+                    <td class="table_h">
+                        现金💸:
+                        <a class="nun" id="cash"></a>
+                    </td>
+                    <td class="table_h">
+                        问题数🚧:
+                        <a class="nun" id="fault"></a>
+                    </td>
+                    <td class="table_h">
+                        排行榜📈:
+                        <a class="nun" id="ranking"></a>
+                    </td>
+                </tr>
+                <tr class="table_w">
+                    <td class="table_h">
+                        昵称:
+                        <a class="nun" id="nickname"></a>
+                    </td>
+                    <td class="table_h">
+                        ID:
+                        <a class="nun" id="IDS"></a>
+                    </td>
+                    <td class="table_h">
+                        肥料值:
+                        <a class="nun" id="fertilizer"></a>
+                    </td>
+                    <td class="table_h">
+                        节气/天气🌡️:
+                        <a class="nun" id="weather"></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="m_sbarr"></div>
+    <div class="page">
+        <div class="sidebar" id="sidebar">
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./五谷类.html'"><a class="div">五谷类</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./麻，棉花.html'"><a class="div">麻，棉花</a><br></div>
+            <div class="this" onmouseover="overr(this)" onmouseleave="leaver(this)" onclick="window.location='./蔬果.html'"><a class="div">蔬果</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./茶.html'"><a class="div">茶类</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./菌类.html'"><a class="div">菌类</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./观赏类.html'"><a class="div">观赏类</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./稀有品种.html'"><a class="div">稀有品种</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./海产作物.html'"><a class="div">海产作物</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./农药购买.html'"><a class="div">农药购买</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./肥料购买.html'"><a class="div">肥料购买</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./水源.html'"><a class="div">水源</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./市场.html'"><a class="div">市场</a><br></div>
+        </div>
+        <div class="s_mbarr"></div>
+        <div class="main" id="main">
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/varspinach.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">菠菜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_35'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(35, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_35'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(35, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_35">加载……</a><br> 增加亩产<button type="button" onclick="dispose(35, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_35">加载……</a>KG<br> <a id="w_35">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/parsley.png">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">香菜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_36'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(36, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_36'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(36, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_36">加载……</a><br> 增加亩产<button type="button" onclick="dispose(36, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_36">加载……</a>KG<br> <a id="w_36">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/celery.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">芹菜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_37'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(37, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_37'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(37, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_37">加载……</a><br> 增加亩产<button type="button" onclick="dispose(37, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_37">加载……</a>KG<br> <a id="w_37">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Swampcabbage.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">蕹菜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_38'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(38, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_38'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(38, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_38">加载……</a><br> 增加亩产<button type="button" onclick="dispose(38, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_38">加载……</a>KG<br> <a id="w_38">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Gardenchrysanthemum.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">茼蒿</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_39'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(39, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_39'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(39, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_39">加载……</a><br> 增加亩产<button type="button" onclick="dispose(39, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_39">加载……</a>KG<br> <a id="w_39">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/asparagus.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">芦笋</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_40'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(40, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_40'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(40, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_40">加载……</a><br> 增加亩产<button type="button" onclick="dispose(40, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_40">加载……</a>KG<br> <a id="w_40">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/fennel.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">茴香</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_41'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(41, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_41'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(41, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_41">加载……</a><br> 增加亩产<button type="button" onclick="dispose(41, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_41">加载……</a>KG<br> <a id="w_41">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/amaranth.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">苋菜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_42'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(42, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_42'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(42, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_42">加载……</a><br> 增加亩产<button type="button" onclick="dispose(42, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_42">加载……</a>KG<br> <a id="w_42">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/lettuce.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">莴苣</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_43'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(43, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_43'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(43, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_43">加载……</a><br> 增加亩产<button type="button" onclick="dispose(43, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_43">加载……</a>KG<br> <a id="w_43">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Leaf_lettuce.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">油麦菜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_44'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(44, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_44'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(44, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_44">加载……</a><br> 增加亩产<button type="button" onclick="dispose(44, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_44">加载……</a>KG<br> <a id="w_44">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Chinese_cabbage.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">白菜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_45'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(45, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_45'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(45, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_45">加载……</a><br> 增加亩产<button type="button" onclick="dispose(45, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_45">加载……</a>KG<br> <a id="w_45">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Chinese_cabbagee.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">小白菜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_46'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(46, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_46'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(46, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_46">加载……</a><br> 增加亩产<button type="button" onclick="dispose(46, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_46">加载……</a>KG<br> <a id="w_46">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Broadbeaked_mustard.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">塌棵菜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_47'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(47, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_47'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(47, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_47">加载……</a><br> 增加亩产<button type="button" onclick="dispose(47, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_47">加载……</a>KG<br> <a id="w_47">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Chinese_cabbageee.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">大白菜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_48'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(48, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_48'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(48, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_48">加载……</a><br> 增加亩产<button type="button" onclick="dispose(48, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_48">加载……</a>KG<br> <a id="w_48">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/rapeseed.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">油菜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_49'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(49, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_49'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(49, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_49">加载……</a><br> 增加亩产<button type="button" onclick="dispose(49, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_49">加载……</a>KG<br> <a id="w_49">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Shepherds_purse.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">荠菜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_50'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(50, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_50'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(50, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_50">加载……</a><br> 增加亩产<button type="button" onclick="dispose(50, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_50">加载……</a>KG<br> <a id="w_50">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/turnip.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">芜菁</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_51'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(51, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_51'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(51, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_51">加载……</a><br> 增加亩产<button type="button" onclick="dispose(51, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_51">加载……</a>KG<br> <a id="w_51">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/rapeseedd.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">野泽菜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_52'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(52, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_52'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(52, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_52">加载……</a><br> 增加亩产<button type="button" onclick="dispose(52, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_52">加载……</a>KG<br> <a id="w_52">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/broccoli.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">西兰花</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_53'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(53, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_53'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(53, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_53">加载……</a><br> 增加亩产<button type="button" onclick="dispose(53, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_53">加载……</a>KG<br> <a id="w_53">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/broccolii.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">花椰菜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_54'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(54, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_54'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(54, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_54">加载……</a><br> 增加亩产<button type="button" onclick="dispose(54, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_54">加载……</a>KG<br> <a id="w_54">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/cabbage.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">卷心菜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_55'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(55, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_55'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(55, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_55">加载……</a><br> 增加亩产<button type="button" onclick="dispose(55, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_55">加载……</a>KG<br> <a id="w_55">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Purplecabbage.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">紫甘蓝</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_56'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(56, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_56'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(56, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_56">加载……</a><br> 增加亩产<button type="button" onclick="dispose(56, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_56">加载……</a>KG<br> <a id="w_56">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Water_celery.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">水芹</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_57'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(57, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_57'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(57, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_57">加载……</a><br> 增加亩产<button type="button" onclick="dispose(57, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_57">加载……</a>KG<br> <a id="w_57">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Green_Chinese_onion.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">大葱</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_58'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(58, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_58'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(58, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_58">加载……</a><br> 增加亩产<button type="button" onclick="dispose(58, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_58">加载……</a>KG<br> <a id="w_58">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Spring_Onions.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">小葱</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_59'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(59, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_59'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(59, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_59">加载……</a><br> 增加亩产<button type="button" onclick="dispose(59, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_59">加载……</a>KG<br> <a id="w_59">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/garlic.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">大蒜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_60'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(60, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_60'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(60, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_60">加载……</a><br> 增加亩产<button type="button" onclick="dispose(60, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_60">加载……</a>KG<br> <a id="w_60">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Onions.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">洋葱</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_61'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(61, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_61'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(61, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_61">加载……</a><br> 增加亩产<button type="button" onclick="dispose(61, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_61">加载……</a>KG<br> <a id="w_61">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/leek.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">韭菜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_62'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(62, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_62'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(62, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_62">加载……</a><br> 增加亩产<button type="button" onclick="dispose(62, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_62">加载……</a>KG<br> <a id="w_62">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/asparaguss.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">竹笋</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_63'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(63, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_63'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(63, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_63">加载……</a><br> 增加亩产<button type="button" onclick="dispose(63, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_63">加载……</a>KG<br> <a id="w_63">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/cucumber.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">黄瓜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_64'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(64, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_64'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(64, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_64">加载……</a><br> 增加亩产<button type="button" onclick="dispose(64, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_64">加载……</a>KG<br> <a id="w_64">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Towel_gourd.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">丝瓜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_65'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(65, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_65'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(65, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_65">加载……</a><br> 增加亩产<button type="button" onclick="dispose(65, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_65">加载……</a>KG<br> <a id="w_65">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Wax_gourd.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">冬瓜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_66'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(66, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_66'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(66, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_66">加载……</a><br> 增加亩产<button type="button" onclick="dispose(66, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_66">加载……</a>KG<br> <a id="w_66">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Bitter_melon.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">苦瓜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_67'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(67, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_67'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(67, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_67">加载……</a><br> 增加亩产<button type="button" onclick="dispose(67, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_67">加载……</a>KG<br> <a id="w_67">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/pumpkin.webp">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">南瓜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_68'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(68, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_68'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(68, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_68">加载……</a><br> 增加亩产<button type="button" onclick="dispose(68, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_68">加载……</a>KG<br> <a id="w_68">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/zucchini.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">西葫芦</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_69'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(69, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_69'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(69, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_69">加载……</a><br> 增加亩产<button type="button" onclick="dispose(69, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_69">加载……</a>KG<br> <a id="w_69">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Winter_squash.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">笋瓜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_70'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(70, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_70'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(70, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_70">加载……</a><br> 增加亩产<button type="button" onclick="dispose(70, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_70">加载……</a>KG<br> <a id="w_70">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/eggplant.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">茄子</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_71'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(71, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_71'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(71, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_71">加载……</a><br> 增加亩产<button type="button" onclick="dispose(71, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_71">加载……</a>KG<br> <a id="w_71">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/tomato.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">番茄</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_72'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(72, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_72'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(72, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_72">加载……</a><br> 增加亩产<button type="button" onclick="dispose(72, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_72">加载……</a>KG<br> <a id="w_72">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/chili.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">辣椒</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_73'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(73, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_73'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(73, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_73">加载……</a><br> 增加亩产<button type="button" onclick="dispose(73, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_73">加载……</a>KG<br> <a id="w_73">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Pepper_dish.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">菜椒</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_74'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(74, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_74'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(74, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_74">加载……</a><br> 增加亩产<button type="button" onclick="dispose(74, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_74">加载……</a>KG<br> <a id="w_74">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/The_potato.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">马铃薯</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_75'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(75, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_75'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(75, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_75">加载……</a><br> 增加亩产<button type="button" onclick="dispose(75, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_75">加载……</a>KG<br> <a id="w_75">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/yam.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">山药</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_76'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(76, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_76'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(76, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_76">加载……</a><br> 增加亩产<button type="button" onclick="dispose(76, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_76">加载……</a>KG<br> <a id="w_76">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/taro.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">紫芋</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_77'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(77, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_77'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(77, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_77">加载……</a><br> 增加亩产<button type="button" onclick="dispose(77, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_77">加载……</a>KG<br> <a id="w_77">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/konjac.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">魔芋</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_78'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(78, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_78'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(78, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_78">加载……</a><br> 增加亩产<button type="button" onclick="dispose(78, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_78">加载……</a>KG<br> <a id="w_78">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/ginger.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">姜</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">苎麻是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_79'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(79, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_79'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(79, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_79">加载……</a><br> 增加亩产<button type="button" onclick="dispose(79, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_79">加载……</a>KG<br> <a id="w_79">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

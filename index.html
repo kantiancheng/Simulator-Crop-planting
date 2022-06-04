@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/kantiancheng/live2d-widget@master/autoload.js"></script>
+    <script>
+        var new_page = "主页";
+    </script>
+
+    <title>作物种植区</title>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <link href="./styles.css" rel="stylesheet">
+    <script src="./storage.js"></script>
+    <script src="./renderer.js"></script>
+</head>
+
+<body onload="initialize();">
+    <div id="inform" class="inform">
+        <a id="inform_in" class="inform_in"></a>
+    </div>
+    <div class="autoc" onclick="autoc();">
+        <div id="autoc_in" class="autoc_in">
+            自动出售︿<br>已关<br>﹀
+        </div>
+    </div>
+    <div class="topbar" id="topbar">
+        <div class="table-div">
+            <table>
+                <tr class="table_w">
+                    <td class="table_h">
+                        经验🔬:
+                        <a class="nun" id="Experience"></a>
+                    </td>
+                    <td class="table_h">
+                        现金💸:
+                        <a class="nun" id="cash"></a>
+                    </td>
+                    <td class="table_h">
+                        问题数🚧:
+                        <a class="nun" id="fault"></a>
+                    </td>
+                    <td class="table_h">
+                        排行榜📈:
+                        <a class="nun" id="ranking"></a>
+                    </td>
+                </tr>
+                <tr class="table_w">
+                    <td class="table_h">
+                        昵称:
+                        <a class="nun" id="nickname"></a>
+                    </td>
+                    <td class="table_h">
+                        ID:
+                        <a class="nun" id="IDS"></a>
+                    </td>
+                    <td class="table_h">
+                        肥料值:
+                        <a class="nun" id="fertilizer"></a>
+                    </td>
+                    <td class="table_h">
+                        节气/天气🌡️:
+                        <a class="nun" id="weather"></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="m_sbarr"></div>
+    <div class="page">
+        <div class="sidebar" id="sidebar">
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./五谷类.html'"><a class="div">五谷类</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./麻，棉花.html'"><a class="div">麻，棉花</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./蔬果.html'"><a class="div">蔬果</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./茶.html'"><a class="div">茶类</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./菌类.html'"><a class="div">菌类</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./观赏类.html'"><a class="div">观赏类</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./稀有品种.html'"><a class="div">稀有品种</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./海产作物.html'"><a class="div">海产作物</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./农药购买.html'"><a class="div">农药购买</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./肥料购买.html'"><a class="div">肥料购买</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./水源.html'"><a class="div">水源</a><br></div>
+            <div onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./市场.html'"><a class="div">市场</a><br></div>
+        </div>
+        <div class="s_mbarr"></div>
+        <div class="main" id="main">
+            <div id="ufalert" style="font-size: 490%; text-align: center; margin-top: 20%; color: rgb(101, 101, 101);">
+                「请在左边选择一个类型」
+            </div>
+            <div style="text-align: center;">
+                <input id="uidvv" type="text" style="font-size: 490%; text-align: center; margin-top: 20%; color: rgb(101, 101, 101); " placeholder="起个名字吧">
+                <button id="hide" style="font-size: 490%; text-align: center; margin-top: 20%; color: rgb(101, 101, 101);" type="button" onclick="setuid();">提交</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
