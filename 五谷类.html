@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+<head>
+    <iframe src="./loding.html" class="loding" id="loding">
+
+    </iframe>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/kantiancheng/live2d-widget@master/autoload.js"></script>
+    <script>
+        var new_page = "五谷类";
+    </script>
+
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+
+    <link href="./styles.css" rel="stylesheet">
+    <title>作物种植区</title>
+    <script src="./storage.js"></script>
+    <script src="./renderer.js"></script>
+</head>
+
+<body onload="initialize();" style="background-image: url('./img/food_crops.jpg'); background-size: cover; background-attachment:fixed;">
+    <div id="inform" class="inform">
+        <a id="inform_in" class="inform_in"></a>
+    </div>
+    <div class="autoc" onclick="autoc();">
+        <div id="autoc_in" class="autoc_in">
+            自动出售︿<br>已关<br>﹀
+        </div>
+    </div>
+    <div id='hide'></div>
+    <div id="uidvv"></div>
+    <div class="topbar" id="topbar">
+        <div class="table-div">
+            <table>
+                <tr class="table_w">
+                    <td class="table_h">
+                        经验🔬:
+                        <a class="nun" id="Experience"></a>
+                    </td>
+                    <td class="table_h">
+                        现金💸:
+                        <a class="nun" id="cash"></a>
+                    </td>
+                    <td class="table_h">
+                        问题数🚧:
+                        <a class="nun" id="fault"></a>
+                    </td>
+                    <td class="table_h">
+                        排行榜📈:
+                        <a class="nun" id="ranking"></a>
+                    </td>
+                </tr>
+                <tr class="table_w">
+                    <td class="table_h">
+                        昵称:
+                        <a class="nun" id="nickname"></a>
+                    </td>
+                    <td class="table_h">
+                        ID:
+                        <a class="nun" id="IDS"></a>
+                    </td>
+                    <td class="table_h">
+                        肥料值:
+                        <a class="nun" id="fertilizer"></a>
+                    </td>
+                    <td class="table_h">
+                        节气/天气🌡️:
+                        <a class="nun" id="weather"></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="m_sbarr"></div>
+    <div class="page">
+        <div class="sidebar" id="sidebar">
+            <div class="this" id="aa" onmouseover="overr(this)" onmouseleave="leaver(this)" onclick="window.location='./五谷类.html'"><a class="div">五谷类</a><br></div>
+            <div id="bb" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./麻，棉花.html'"><a class="div">麻，棉花</a><br></div>
+            <div id="cc" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./蔬果.html'"><a class="div">蔬果</a><br></div>
+            <div id="dd" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./茶.html'"><a class="div">茶类</a><br></div>
+            <div id="ee" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./菌类.html'"><a class="div">菌类</a><br></div>
+            <div id="ff" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./观赏类.html'"><a class="div">观赏类</a><br></div>
+            <div id="gg" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./稀有品种.html'"><a class="div">稀有品种</a><br></div>
+            <div id="hh" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./海产作物.html'"><a class="div">海产作物</a><br></div>
+            <div id="ii" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./瑞士银行.html'"><a class="div">瑞士银行</a><br></div>
+            <div id="jj" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./肥料购买.html'"><a class="div">肥料购买</a><br></div>
+            <div id="kk" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./水源.html'"><a class="div">水源</a><br></div>
+            <div id="ll" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./市场.html'"><a class="div">市场</a><br></div>
+            <div id="mm" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./设置.html'"><a class="div">设置</a><br></div>
+        </div>
+        <div class="s_mbarr"></div>
+        <div class="main" id="main">
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Dryrice.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">旱稻</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">旱稻叶粗壮繁茂，叶片较宽，耐热。</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_0'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(0, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_0'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(0, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_0">加载……</a><br> 增加亩产<button type="button" onclick="dispose(0, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_0">加载……</a>KG<br> <a id="w_0">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/rice.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee">水稻</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in ">大米可以酿酒、制糖、稻壳饲料。</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_1'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(1, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_1'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(1, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_1">加载……</a><br> 增加亩产<button type="button" onclick="dispose(1, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_1">加载……</a>KG<br> <a id="w_1">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/wheat.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">小麦</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">小麦营养价值高，含B族维生素。</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_2'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(2, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_2'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(2, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_2">加载……</a><br> 增加亩产<button type="button" onclick="dispose(2, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_2">加载……</a>KG<br> <a id="w_2">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/barley.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">大麦</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">大麦是草本植物，秆粗壮，无毛。</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_3'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(3, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_3'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(3, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_3">加载……</a><br> 增加亩产<button type="button" onclick="dispose(3, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_3">加载……</a>KG<br> <a id="w_3">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/rye.webp">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">黑麦</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">黑麦耐寒能力强，耐旱，对土要求低。</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_4'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(4, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_4'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(4, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_4">加载……</a><br> 增加亩产<button type="button" onclick="dispose(4, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_4">加载……</a>KG<br> <a id="w_4">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/oats.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">燕麦</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">扁平，微粗糙，圆锥花序开展，塔形。</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_5'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(5, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_5'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(5, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_5">加载……</a><br> 增加亩产<button type="button" onclick="dispose(5, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_5">加载……</a>KG<br> <a id="w_5">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/buckwheat.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">荞麦</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">荞麦不耐高温、干旱、大风，需水多。</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_6'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(6, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_6'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(6, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_6">加载……</a><br> 增加亩产<button type="button" onclick="dispose(6, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_6">加载……</a>KG<br> <a id="w_6">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/broadbeans.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">蚕豆</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">蚕豆营养高，矿物质、维他命、钙。</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_7'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(7, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_7'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(7, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_7">加载……</a><br> 增加亩产<button type="button" onclick="dispose(7, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_7">加载……</a>KG<br> <a id="w_7">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/peas.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">豌豆</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">全株绿色，光滑无毛，被粉霜。</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_8'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(8, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_8'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(8, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_8">加载……</a><br> 增加亩产<button type="button" onclick="dispose(8, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_8">加载……</a>KG<br> <a id="w_8">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Mungbeans.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">绿豆</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">绿豆清热解毒，被广泛制作成绿豆汤。</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_9'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(9, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_9'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(9, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_9">加载……</a><br> 增加亩产<button type="button" onclick="dispose(9, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_9">加载……</a>KG<br> <a id="w_9">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/soybeans.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">黄豆</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">黄豆已有五千年栽培历史，富含蛋白质。</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_10'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(10, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_10'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(10, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_10">加载……</a><br> 增加亩产<button type="button" onclick="dispose(10, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_10">加载……</a>KG<br> <a id="w_10">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/redbeans.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">红豆</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">红豆是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_11'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(11, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_11'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(11, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_11">加载……</a><br> 增加亩产<button type="button" onclick="dispose(11, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_11">加载……</a>KG<br> <a id="w_11">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/peass.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">大豌豆</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">大豌豆是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_12'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(12, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_12'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(12, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_12">加载……</a><br> 增加亩产<button type="button" onclick="dispose(12, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_12">加载……</a>KG<br> <a id="w_12">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/peanuts.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">花生</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">花生是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_13'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(13, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_13'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(13, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_13">加载……</a><br> 增加亩产<button type="button" onclick="dispose(13, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_13">加载……</a>KG<br> <a id="w_13">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/regularcorn.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">玉米</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">普通玉米是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_14'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(14, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_14'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(14, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_14">加载……</a><br> 增加亩产<button type="button" onclick="dispose(14, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_14">加载……</a>KG<br> <a id="w_14">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/waxycorn.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">糯玉米</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">糯玉米是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_15'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(15, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_15'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(15, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_15">加载……</a><br> 增加亩产<button type="button" onclick="dispose(15, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_15">加载……</a>KG<br> <a id="w_15">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/sweetcorn.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">甜玉米</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">甜玉米是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_16'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(16, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_16'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(16, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_16">加载……</a><br> 增加亩产<button type="button" onclick="dispose(16, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_16">加载……</a>KG<br> <a id="w_16">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/blackcorn.png">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">黑玉米</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">黑玉米是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_17'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(17, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_17'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(17, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_17">加载……</a><br> 增加亩产<button type="button" onclick="dispose(17, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_17">加载……</a>KG<br> <a id="w_17">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/Colorfulfruitcorn.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">彩玉米</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">彩玉米是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_18'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(18, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_18'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(18, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_18">加载……</a><br> 增加亩产<button type="button" onclick="dispose(18, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_18">加载……</a>KG<br> <a id="w_18">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/sweetpotato.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">甘薯</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">甘薯是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_19'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(19, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_19'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(19, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_19">加载……</a><br> 增加亩产<button type="button" onclick="dispose(19, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_19">加载……</a>KG<br> <a id="w_19">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/potato.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">马铃薯</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">马铃薯是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_20'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(20, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_20'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(20, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_20">加载……</a><br> 增加亩产<button type="button" onclick="dispose(20, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_20">加载……</a>KG<br> <a id="w_20">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/yams.png">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">山药</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">山药是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_21'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(21, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_21'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(21, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_21">加载……</a><br> 增加亩产<button type="button" onclick="dispose(21, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_21">加载……</a>KG<br> <a id="w_21">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/multi_headyam.jpeg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">多头芋</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">多头芋是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_22'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(22, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_22'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(22, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_22">加载……</a><br> 增加亩产<button type="button" onclick="dispose(22, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_22">加载……</a>KG<br> <a id="w_22">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/large_headyam.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">大魁芋</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">大魁芋是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_23'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(23, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_23'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(23, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_23">加载……</a><br> 增加亩产<button type="button" onclick="dispose(23, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_23">加载……</a>KG<br> <a id="w_23">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ap">
+                <table class="tools">
+                    <tr>
+                        <td>
+                            <div class="img-div">
+                                <img class="img " src="./img/multi_seedyam.jpg">
+                            </div>
+                            <div class="title-div">
+                                <a class="titlee ">多子芋</a>
+                            </div>
+                            <div class="in-div">
+                                <a class="in">多子芋是三大谷物之一，受人们欢迎！</a>
+                            </div>
+                            <div class="set-div">
+                                <table class="set">
+                                    <tr>
+                                        <td class="cells">拥有亩数:
+                                            <a id='n_24'>加载……</a><br> 增加亩数
+                                            <button type="button" onclick="dispose(24, 1);">+</button></td>
+                                        <td class="cells">售价:
+                                            <a id='s_24'>加载……</a><br> 出售（1KG）<button type="button" onclick="dispose(24, 0);">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cells">亩产:<a id="m_24">加载……</a><br> 增加亩产<button type="button" onclick="dispose(24, 2);">+</button> </td>
+                                        <td class="cells">当前拥有:
+                                            <a id="h_24">加载……</a>KG<br> <a id="w_24">加载……</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+<head>
+    <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+    <iframe src="./loding.html" class="loding" id="loding">
+
+    </iframe>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/kantiancheng/live2d-widget@master/autoload.js"></script>
+    <script>
+        var new_page = "瑞士银行";
+    </script>
+
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+
+    <link href="./styles.css" rel="stylesheet">
+    <title>瑞士银行</title>
+    <script src="./storage.js"></script>
+    <script src="./renderer.js"></script>
+</head>
+
+<body onload="initialize();">
+    <div id="inform" class="inform">
+        <a id="inform_in" class="inform_in"></a>
+    </div>
+    <div class="autoc" onclick="autoc();">
+        <div id="autoc_in" class="autoc_in">
+            自动出售︿<br>已关<br>﹀
+        </div>
+    </div>
+    <div id='hide'></div>
+    <div id="uidvv"></div>
+    <div class="topbar" id="topbar">
+        <div class="table-div">
+            <table>
+                <tr class="table_w">
+                    <td class="table_h">
+                        经验🔬:
+                        <a class="nun" id="Experience"></a>
+                    </td>
+                    <td class="table_h">
+                        现金💸:
+                        <a class="nun" id="cash"></a>
+                    </td>
+                    <td class="table_h">
+                        问题数🚧:
+                        <a class="nun" id="fault"></a>
+                    </td>
+                    <td class="table_h">
+                        排行榜📈:
+                        <a class="nun" id="ranking"></a>
+                    </td>
+                </tr>
+                <tr class="table_w">
+                    <td class="table_h">
+                        昵称:
+                        <a class="nun" id="nickname"></a>
+                    </td>
+                    <td class="table_h">
+                        ID:
+                        <a class="nun" id="IDS"></a>
+                    </td>
+                    <td class="table_h">
+                        肥料值:
+                        <a class="nun" id="fertilizer"></a>
+                    </td>
+                    <td class="table_h">
+                        节气/天气🌡️:
+                        <a class="nun" id="weather"></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="m_sbarr"></div>
+    <div class="page">
+        <div class="sidebar" id="sidebar">
+            <div id="aa" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./五谷类.html'"><a class="div">五谷类</a><br></div>
+            <div id="bb" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./麻，棉花.html'"><a class="div">麻，棉花</a><br></div>
+            <div id="cc" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./蔬果.html'"><a class="div">蔬果</a><br></div>
+            <div id="dd" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./茶.html'"><a class="div">茶类</a><br></div>
+            <div id="ee" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./菌类.html'"><a class="div">菌类</a><br></div>
+            <div id="ff" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./观赏类.html'"><a class="div">观赏类</a><br></div>
+            <div id="gg" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./稀有品种.html'"><a class="div">稀有品种</a><br></div>
+            <div id="hh" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./海产作物.html'"><a class="div">海产作物</a><br></div>
+            <div class="this" id="ii" onmouseover="overr(this)" onmouseleave="leaver(this)" onclick="window.location='./瑞士银行.html'"><a class="div">瑞士银行</a><br></div>
+            <div id="jj" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./肥料购买.html'"><a class="div">肥料购买</a><br></div>
+            <div id="kk" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./水源.html'"><a class="div">水源</a><br></div>
+            <div id="ll" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./市场.html'"><a class="div">市场</a><br></div>
+            <div id="mm" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./设置.html'"><a class="div">设置</a><br></div>
+        </div>
+        <div class="s_mbarr"></div>
+        <div class="main" id="main">
+            <div class="bank" id="bank">
+
+                <div id="inin" onclick="bank_chrnge('g_c')">
+                    <br>
+                    <h1 style="margin-top: 3%;">瑞士银行</h1>
+                    <div class="g_c" id="g_c">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img class="imgc" src="./img/gold.png">
+                                </td>
+                                <td>
+                                    <img class="imgc" src="./img/ero.png">
+                                </td>
+                                <td>
+                                    <img class="imgc" src="./img/cash.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="goldi">金条</td>
+                                <td>金条转现金</td>
+                                <td id="cashi">现金</td>
+                            </tr>
+                        </table>
+                    </div><br>
+                    <div class="c_g" id="c_g" onclick="bank_chrnge('c_g')">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img class="imgc" src="./img/cash.png">
+                                </td>
+                                <td>
+                                    <img class="imgc" src="./img/ero.png"></td>
+                                <td>
+                                    <img class="imgc" src="./img/gold.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="cashi_2">现金</td>
+                                <td>现金转金条</td>
+                                <td id="goldi_2">金条</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br>
+                </div>
+
+                <div id="register">
+                    <br>
+                    <h1 style="margin-top: 3%;">瑞士银行-注册</h1>
+                    <div>
+                        <input class="rr" id="username" type="text" placeholder="用户名*" /><br><br>
+                        <input class="rr" id="email" type="email" placeholder="电子邮箱*" /><br><br>
+                        <input class="rr" id="cemail" type="email" placeholder="确认电子邮箱*" /><br><br>
+                        <input class="rr" id="password" type="password" placeholder="密码*" /><br><br>
+                        <input class="rr" id="cpassword" type="password" placeholder="确认密码*" /><br><br>
+                        <button class="sub" id="createButton" onclick="createParseUser();">创建用户</button>
+                        <button class="sub" id="createButton" onclick="bank_cheng('login')">登录</button>
+                    </div>
+                    <br>
+                </div>
+
+                <div id="login">
+                    <br>
+                    <h1 style="margin-top: 3%;">瑞士银行-登录</h1>
+                    <div>
+                        <input class="rr" id="lusername" type="text" placeholder="用户名(注意大小写)" /><br><br>
+                        <input class="rr" id="lpassword" type="password" placeholder="密码(注意大小写)" /><br><br>
+                        <button class="sub" id="createButton" onclick="retrieveUser()">登录</button>
+                        <button class="sub" id="createButton" onclick="bank_cheng('create')">创建用户</button>
+                    </div>
+                    <br>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

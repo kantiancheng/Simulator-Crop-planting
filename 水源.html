@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+<head>
+    <iframe src="./loding.html" class="loding" id="loding">
+
+    </iframe>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/kantiancheng/live2d-widget@master/autoload.js"></script>
+    <script>
+        var new_page = "水源";
+    </script>
+
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+
+    <link href="./styles.css" rel="stylesheet">
+    <title>作物种植区</title>
+    <script src="./storage.js"></script>
+    <script src="./renderer.js"></script>
+</head>
+
+<body onload="initialize();">
+    <div id="inform" class="inform">
+        <a id="inform_in" class="inform_in"></a>
+    </div>
+    <div class="autoc" onclick="autoc();">
+        <div id="autoc_in" class="autoc_in">
+            自动出售︿<br>已关<br>﹀
+        </div>
+    </div>
+    <div id='hide'></div>
+    <div id="uidvv"></div>
+    <div class="topbar" id="topbar">
+        <div class="table-div">
+            <table>
+                <tr class="table_w">
+                    <td class="table_h">
+                        经验🔬:
+                        <a class="nun" id="Experience"></a>
+                    </td>
+                    <td class="table_h">
+                        现金💸:
+                        <a class="nun" id="cash"></a>
+                    </td>
+                    <td class="table_h">
+                        问题数🚧:
+                        <a class="nun" id="fault"></a>
+                    </td>
+                    <td class="table_h">
+                        排行榜📈:
+                        <a class="nun" id="ranking"></a>
+                    </td>
+                </tr>
+                <tr class="table_w">
+                    <td class="table_h">
+                        昵称:
+                        <a class="nun" id="nickname"></a>
+                    </td>
+                    <td class="table_h">
+                        ID:
+                        <a class="nun" id="IDS"></a>
+                    </td>
+                    <td class="table_h">
+                        肥料值:
+                        <a class="nun" id="fertilizer"></a>
+                    </td>
+                    <td class="table_h">
+                        节气/天气🌡️:
+                        <a class="nun" id="weather"></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="m_sbarr"></div>
+    <div class="page">
+        <div class="sidebar" id="sidebar">
+            <div id="aa" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./五谷类.html'"><a class="div">五谷类</a><br></div>
+            <div id="bb" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./麻，棉花.html'"><a class="div">麻，棉花</a><br></div>
+            <div id="cc" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./蔬果.html'"><a class="div">蔬果</a><br></div>
+            <div id="dd" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./茶.html'"><a class="div">茶类</a><br></div>
+            <div id="ee" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./菌类.html'"><a class="div">菌类</a><br></div>
+            <div id="ff" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./观赏类.html'"><a class="div">观赏类</a><br></div>
+            <div id="gg" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./稀有品种.html'"><a class="div">稀有品种</a><br></div>
+            <div id="hh" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./海产作物.html'"><a class="div">海产作物</a><br></div>
+            <div id="ii" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./瑞士银行.html'"><a class="div">瑞士银行</a><br></div>
+            <div id="jj" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./肥料购买.html'"><a class="div">肥料购买</a><br></div>
+            <div class="this" id="kk" onmouseover="overr(this)" onmouseleave="leaver(this)" onclick="window.location='./水源.html'"><a class="div">水源</a><br></div>
+            <div id="ll" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./市场.html'"><a class="div">市场</a><br></div>
+            <div id="mm" onmouseover="overr(this)" onmouseleave="leaver(this)" class="bb" onclick="window.location='./设置.html'"><a class="div">设置</a><br></div>
+        </div>
+        <div class="s_mbarr"></div>
+        <div class="main" id="main">
+            <div class="water_m">
+                <div style="-webkit-border-top-left-radius: 15px;
+                -webkit-border-top-right-radius: 15px;
+                -moz-border-radius-topleft: 15px;
+                -moz-border-radius-topright: 15px;
+                border-top-left-radius: 15px;
+                border-top-right-radius: 15px;" id="w_01" class="ww_w"></div>
+                <div id="w_2" class="ww_w"></div>
+                <div id="w_3" class="ww_w"></div>
+                <div id="w_4" class="ww_w"></div>
+                <div id="w_5" class="ww_w"></div>
+                <div id="w_6" class="ww_w"></div>
+                <div id="w_7" class="ww_w"></div>
+                <div id="w_8" class="ww_w"></div>
+                <div id="w_9" class="ww_w"></div>
+                <div style="-webkit-border-bottom-right-radius: 15px;
+                -webkit-border-bottom-left-radius: 15px;
+                -moz-border-radius-bottomright: 15px;
+                -moz-border-radius-bottomleft: 15px;
+                border-bottom-right-radius: 15px;
+                border-bottom-left-radius: 15px;" id="w_10" class="ww_w"></div>
+            </div>
+            <div class="water_d">
+                <div class="water_iner">
+                    <div class="water_iner-in">
+                        <table>
+                            <tr>
+                                <!--　-->
+                                <td class="water_cell">　　耗水(t/秒):
+                                    <a id="water_cell-1"></a>　　</td>
+                                <td></td>
+                                <td class="water_cell">　　当前水量(t):
+                                    <a id="water_cell-2"></a>　　</td>
+                            </tr>
+                            <tr>
+                                <td class="water_cell">　　水产(t/秒):
+                                    <a id="water_cell-3"></a>　　</td>
+                                <td></td>
+                                <td class="water_cell">　　水库容量(t):
+                                    <a id="water_cell-4"></a>　　</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="ap">
+                    <table class="tools">
+                        <tr>
+                            <td>
+                                <div class="img-div">
+                                    <img class="img " src="./img/rainwater_collection.png">
+                                </div>
+                                <div class="title-div">
+                                    <a class="titlee">雨水收集装置</a>
+                                </div>
+                                <div class="in-div">
+                                    <a class="in ">收集雨水，使用雨水灌溉。</a>
+                                </div>
+                                <div class="set-div">
+                                    <table class="set">
+                                        <button onclick="waterbuy(1);" class="f_b">购买(售价:300现金)</button>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="ap">
+                    <table class="tools">
+                        <tr>
+                            <td>
+                                <div class="img-div">
+                                    <img class="img " src="./img/river.png">
+                                </div>
+                                <div class="title-div">
+                                    <a class="titlee">河水沟渠</a>
+                                </div>
+                                <div class="in-div">
+                                    <a class="in ">铺设沟渠，引流河水。</a>
+                                </div>
+                                <div class="set-div">
+                                    <table class="set">
+                                        <button onclick="waterbuy(2);" class="f_b">购买(售价:550现金)</button>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="ap">
+                    <table class="tools">
+                        <tr>
+                            <td>
+                                <div class="img-div">
+                                    <img class="img " src="./img/water_d.png">
+                                </div>
+                                <div class="title-div">
+                                    <a class="titlee">地下水管道</a>
+                                </div>
+                                <div class="in-div">
+                                    <a class="in ">打通地面，连接地下水，灌溉！</a>
+                                </div>
+                                <div class="set-div">
+                                    <table class="set">
+                                        <button onclick="waterbuy(3);" class="f_b">购买(售价:2050现金)</button>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="ap">
+                    <table class="tools">
+                        <tr>
+                            <td>
+                                <div class="img-div">
+                                    <img class="img " src="./img/spray.webp">
+                                </div>
+                                <div class="title-div">
+                                    <a class="titlee">喷淋节水器</a>
+                                </div>
+                                <div class="in-div">
+                                    <a class="in ">使用喷淋装置节水，节省每日用水。</a>
+                                </div>
+                                <div class="set-div">
+                                    <table class="set">
+                                        <button onclick="waterbuy(4);" class="f_b">购买(售价:850现金)</button>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="ap">
+                    <table class="tools">
+                        <tr>
+                            <td>
+                                <div class="img-div">
+                                    <img class="img " src="./img/drop_water.png">
+                                </div>
+                                <div class="title-div">
+                                    <a class="titlee">滴灌节水器</a>
+                                </div>
+                                <div class="in-div">
+                                    <a class="in ">使用滴灌装置节水，节省每日用水。</a>
+                                </div>
+                                <div class="set-div">
+                                    <table class="set">
+                                        <button onclick="waterbuy(5);" class="f_b">购买(售价:2050现金)</button>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <div class="ap">
+                    <table class="tools">
+                        <tr>
+                            <td>
+                                <div class="img-div">
+                                    <img class="img " src="./img/wwwyer.png">
+                                </div>
+                                <div class="title-div">
+                                    <a class="titlee">涌流节水器</a>
+                                </div>
+                                <div class="in-div">
+                                    <a class="in ">使用涌流装置节水，节省每日用水。</a>
+                                </div>
+                                <div class="set-div">
+                                    <table class="set">
+                                        <button onclick="waterbuy(6);" class="f_b">购买(售价:5050现金)</button>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
